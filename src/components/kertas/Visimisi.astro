@@ -1,0 +1,45 @@
+---
+import { getTentangKamiPageTiga } from "@/helpers/rajaKertas"
+import { Image } from "astro:assets"
+
+const response = await getTentangKamiPageTiga()
+---
+
+
+
+<section class="bg-abukoru pb-10 relative">
+<div class="text-white text-[50px] font-normal" >
+    <div class="px-20 pb-10">
+        <h2>VISI MISI</h2>
+    </div>
+   
+    <div class="px-20">
+        <div class="backimage grid grid-cols-1 md:grid-cols-2 p-10">
+         <div class="text-[10px] col-span-1 text-black flex flex-col items-center justify-center">
+            <div class="bg-white pt-10 px-4 pb-2">
+                <p>{response.value.Misi}</p>
+            </div>
+
+            <div class="bg-white pb-10 px-4">
+                <p>{response.value.Visi}</p>
+            </div>
+        
+         </div>
+    
+        <div>
+    </div>
+   
+
+        </div>
+      </div>
+</div>
+</section>
+
+
+<style define:vars={{ image: `url("${response.app_config_image}")` }}>
+    .backimage{
+        background-image: var(--image);
+        width: 100%;
+      
+    }
+    </style>

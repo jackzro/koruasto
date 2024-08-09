@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import {  getTentangKami } from '../../helpers/rajaKertas';
+
+
+const response = await getTentangKami()
+---
+
+<section>
+  {response!== undefined ?<div class=" px-[7%] py-20 md:py-24 lg:py-28 bg-black text-white gap-x-20 ">
+
+<div class="grid grid-cols-1  lg:grid-cols-2">
+    <div class="lg:px-6 py-4 justify-center items-center flex">
+      <Image
+        src={response.app_config_image}
+        class="rounded-img"
+        width={500}
+        height={500}
+        alt={'koru'}
+       
+      />
+    </div>
+
+
+
+    <div class="text-white flex flex-col items-start justify-center space-y-6">
+      <span class="text-3xl md:text-4xl font-bold lg:text-5xl">
+        <p>{response.value.title}</p>
+      </span>
+
+      <span class="text-md lg:text-lg">
+        <p>{response.value.description}</p>
+      </span>
+
+    </div>
+  </div>
+    <div class="border-white border-b-2 mt-14 w-full"></div>
+
+</div>: null}
+</section>

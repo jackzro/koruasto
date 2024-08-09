@@ -1,0 +1,33 @@
+---
+
+
+import { getProductList } from "../../helpers/rajaKertas";
+import CarouselComponent from "../react/Carousel";
+
+const response = await getProductList()
+const {pathname} = Astro.url
+
+---
+
+<section class="p-6 bg-abukoru space-y-1">
+
+    <div class=" text-white space-y-4 pt-10 pl-10">
+        <!-- <div class="border-white border-t-2 mb-14"></div> -->
+        <div>
+          <p class="">Material</p>
+        </div>
+        <div>
+          <h2 class="text-5xl font-bold">P R O D U K </h2>
+        </div>
+        <div class="flex justify-between flex-col space-y-5 md:flex-row">
+          <span>
+            <p>Lihat daftar produk material berkualitas kami</p>
+          </span>
+          <a class="text-white border-2 border-white bg-abukoru hover:text-white hover:bg-black px-6 py-2 rounded-xl flex items-center justify-center" href="/product">Lihat Semua Produk</a>
+        </div>
+      </div>
+
+      {response.results.length !== 0 ? <CarouselComponent client:load produk={response.results} gallery={[]} type="produk" pathname={pathname} />  : null}
+    
+ 
+</section>

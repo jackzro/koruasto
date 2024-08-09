@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import { getWhyKoru } from "../../helpers/rajaKertas";
+const response = await getWhyKoru()
+const {color} = Astro.props
+---
+<section class={`relative flex flex-col items-center justify-center ${color === undefined ? 'bg-black' : 'bg-abukoru'} py-10`}>
+    
+    <div class=" text-white text-[35px] font-normal">
+        <h2>MENGAPA KORU ?</h2>
+    </div>
+
+    <div class="p-10 grid md:grid-cols-6">
+    {response !== undefined ? response.results.map((icons:any)=>{
+        return <div class="text-white grid grid-cols-1">
+            <div class="flex h-10 items-center justify-center py-10">
+                <Image src={icons.image} alt={icons.image_alt} width={50} height={50} class={'text-white'} />
+            </div>
+
+   
+    <div class="flex items-center justify-center h-10 ">
+        <p class="text-xs text-center">{icons.description}</p>
+    </div>
+
+    {color === undefined ? <></>: <div class="border-white md:border-b-2 mt-14 w-full"></div>}
+   
+    </div>
+    }): null}
+ 
+    </div>
+   
+</section>

@@ -1,0 +1,72 @@
+---
+import { getHero, getHeroImage, getWhatsapp } from "@/helpers/rajaKertas";
+import { Image } from "astro:assets";
+import ButtonBeli from "../ButtonBeli";
+
+
+const response = await getHero()
+const backGroundImage = await getHeroImage()
+const responseWhatsapp =await getWhatsapp()
+---
+
+<section class='relative px-[7%]' > 
+  {response !== undefined ? <div>
+    <div style={
+      {
+        "height":'100vh'
+      }
+    } class="flex max-h-[60rem] justify-center items-start text-white">
+
+      <div class="items-center justify-center flex flex-col pt-20">
+
+          <Image
+          src={response.app_config_image}
+          alt={"Koru"}
+          class="w-[400px] h-[150px]"
+          inferSize
+          loading="eager"
+       
+        />
+       
+      
+
+        <div class="lg:w-[700px]">
+          {/* <h1 class="mb-5 text-2xl leading-none font-semibold md:mb-6 md:text-5xl md:leading-tight">
+            {response.value.title}
+          </h1> */}
+          <h1 class="text-text-alternative md:text-[12px]">
+            {response.value.description}
+          </h1>
+        </div>
+
+        <div class="flex items-center justify-between lg:w-[400px] mt-10 gap-6">
+          <button class="bg-white text-black py-2 px-4 rounded-lg">
+            Lihat Produk
+          </button>
+
+          {responseWhatsapp !== undefined ? <ButtonBeli client:load title="Hubungi Kami" stylecss="text-white border-white border-2 py-2 px-4 rounded-lg" response={responseWhatsapp} /> : null}
+
+          {/* <button class="text-white border-white border-2 py-2 px-4 rounded-lg">
+            Hubungi Kami
+          </button> */}
+        </div>
+      </div>
+       
+   
+    </div>
+
+    <div class="absolute inset-0 -z-10">
+        <Image
+          src={backGroundImage.app_config_image}
+          alt={"Koru"}
+          class="w-full h-full object-cover"
+          inferSize
+          loading="eager"
+       
+        />
+        <div class="absolute inset-0 bg-black/50" />
+      </div>
+
+</div> : null}
+    
+</section>

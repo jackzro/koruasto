@@ -1,0 +1,6 @@
+User-agent: *
+disallow: */admin
+disallow: /admin
+disallow /admin/
+
+Sitemap: https://rajakertas.id/sitemap.xml

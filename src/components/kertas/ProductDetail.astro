@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+const {response} =Astro.props
+
+
+---
+
+<div class="flex justify-center items-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center justify-center space-y-2 md:space-x-20 py-10 px-10">
+      <span class="flex flex-col items-center md:items-start  justify-center space-y-10">
+        <h1 class="text-2xl font-bold">{response.product.title}</h1>
+        <p>{response.description}</p>
+      </span>
+      <span class="p-12">
+        <Image
+          src={response.product.product_image}
+          class="rounded-img w-full"
+          alt={response.product.product_image_alt}
+          height="100"
+          width="100"
+
+        />
+      </span>
+    </div>
+  </div>

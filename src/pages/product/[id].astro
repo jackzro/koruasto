@@ -1,0 +1,19 @@
+---
+import Gallery from "@/components/home/Gallery.astro";
+import ProductDetail from "@/components/kertas/ProductDetail.astro";
+import { getProductDetail } from "@/helpers/rajaKertas";
+import Layout from "@/layouts/Layout.astro";
+import Pemesanan from '@/components/kertas/Pemesanan.astro'
+import Footer from "@/components/home/Footer.astro";
+
+const response =await getProductDetail(Astro.params.id)
+---
+
+<Layout title={response.results[0].product.title}>
+<main>
+    <ProductDetail response={response.results[0]} />
+    <Gallery/>
+    <Pemesanan title={response.results[0].product.title}/>
+    <Footer/>
+</main>
+</Layout>

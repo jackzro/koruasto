@@ -1,0 +1,25 @@
+---
+import { getProductList } from "@/helpers/rajaKertas"
+import { Image } from "astro:assets"
+
+
+const response = await getProductList()
+---
+
+<section class="bg-white text-black p-20 flex flex-col justify-center items-center space-y-10">
+    <h2 class="text-6xl font-bold">Products</h2>
+    <div class="grid lg:grid-cols-3 gap-4">
+   {response.results.length!== 0 ?    
+   
+   response?.results.map((list: any) => (
+            <a class="" href={`/product/${list.url_slug}`}>
+      <Image class="mb-2" src={list.product.product_image} width={1000} height={1000} alt={list.product.product_image_alt} />
+      <p
+        class={'text-black font-bold'}
+      >
+        {list.product.title}
+      </p>
+    </a>)) : null
+   }
+    </div>
+</section>

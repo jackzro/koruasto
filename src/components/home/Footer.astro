@@ -1,0 +1,83 @@
+---
+import { getFooter } from "@/helpers/rajaKertas"
+import { Image } from "astro:assets";
+
+
+const response = await getFooter()
+---
+
+<footer class="px-10 pt-4 text-white bg-abukoru">
+  {response !== undefined ?  <div class="grid md:grid-cols-3 space-y-10 md:space-x-6 justify-evenly">
+    <div class="flex flex-col space-y-6">
+        <span>
+          <Image
+            class="aspect-auto"
+            src={response.app_config_image}
+            width={150}
+            height={100}
+            alt={"RajaKertas"}
+        
+          />
+        </span>
+
+        <span>
+          <h2>Alamat:</h2>
+          <p>{response.value.alamat}</p>
+        </span>
+
+        <span class="text-white" >
+          <h2>Kontak:</h2>
+          <span class="flex space-x-2">
+            <Image src={'/images/whatsappwhite.svg'} alt={"whatsapp"} width={20} height={20}/>
+            <p>
+               {response.value.nomor} (Whatsapp)
+            </p>
+          </span>
+        
+        </span>
+
+        {/* <span className="space-x-5">
+          <YoutubeFilled style={{ fontSize: "20px" }} />
+          <FacebookFilled style={{ fontSize: "20px" }} />
+          <InstagramFilled style={{ fontSize: "20px" }} />
+          <LinkedinFilled style={{ fontSize: "20px" }} />
+          <XOutlined style={{ fontSize: "20px" }} />
+        </span> */}
+      </div>
+
+      <div class=" flex flex-col md:items-center">
+        {/* <div class="flex flex-col space-y-2 items-start">
+          {response?.value?.url_list_1.map((url: any) => {
+            return (
+              <a href={url.url} title={url.name}>
+                <p class="hover:text-black">{url.name}</p>
+              </a>
+            );
+          })}
+        </div> */}
+      </div>
+
+      <div class=" flex flex-col md:items-center ">
+        {/* <div class="flex flex-col space-y-2 items-start">
+          {response?.value?.url_list_2.map((url: any) => {
+            return (
+              <a href={url.url} title={url.name}>
+                <p class="hover:text-black">{url.name}</p>
+              </a>
+            );
+          })}
+        </div> */}
+      </div>
+</div>
+  
+
+<div class="border-t-2 border-black mt-10 py-6 flex flex-col lg:flex-row justify-between space-y-10 lg:space-y-0">
+    <span>
+        <p>© {new Date().getFullYear()} Koru</p>
+    </span>
+</div> : null}
+  
+   
+      
+</footer>
+

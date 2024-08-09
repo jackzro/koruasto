@@ -1,0 +1,10 @@
+---
+import NavbarComponent from "./Nav"
+import { getLogoHitam } from "@/helpers/rajaKertas";
+
+const data = await getLogoHitam();
+---
+
+<header>
+    {data !== undefined ?   <NavbarComponent client:load data={data}/> : null}
+</header>

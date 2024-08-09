@@ -1,0 +1,76 @@
+---
+import { getTentangKamiPageDua, getWhatsapp } from "@/helpers/rajaKertas"
+import { Image } from "astro:assets"
+import ButtonBeli from "../ButtonBeli"
+
+
+const response = await getTentangKamiPageDua()
+const responseWhatsapp =await getWhatsapp()
+---
+
+<section class=' bg-black relative' >
+
+    {response?.value !== undefined ?
+    <div class="bg-abukoru py-20">
+          <div class="flex flex-col px-20 text-white">
+
+            <div class="">
+                <Image
+                src={response.app_config_image}
+                alt={"Koru"}
+                class="w-[400px] h-[150px]"
+                height={400}
+                width={150}
+             
+              />
+            </div>
+
+
+              <div class=" w-full space-y-4 mb-32">
+                {/* <h1 class="text-2xl leading-none font-semibold md:mb-6 md:text-5xl md:leading-tight">
+                  {response.value.title}
+                </h1> */}
+                <h1 class="text-sm text-text-alternative md:text-lg mb-10">
+                  {response.value.description}
+                </h1>
+
+                <div class="w-full flex items-center justify-center">
+                  {responseWhatsapp !== undefined ? <ButtonBeli client:load title="Hubungi Kami" stylecss="border-2 border-white bg-abukoru hover:border-abukoru hover:bg-black rounded-lg px-4 py-2 cursor-pointer" response={responseWhatsapp} /> : null}
+                    {/* <button class="rounded-lg px-4 py-2 border-2 border-white" onclick="">Hubungi Kami</button> */}
+                </div>
+
+              
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 md:items-end gap-36 w-full">
+
+                <Image    
+                src={response.app_config_image_2}
+                alt={"Koru"}
+                class="w-[300px] h-[300px] object-cover justify-self-center md:justify-self-start" 
+                height={300}
+                width={300}/>
+                    <Image    
+                src={response.app_config_image_3}
+                alt={"Koru"}
+                class="w-[300px] h-[300px] object-cover justify-self-center" 
+                height={300}
+                width={300}/>
+                    <Image    
+                src={response.app_config_image_4}
+                alt={"Koru"}
+                class="w-[300px] h-[300px] object-cover justify-self-center md:justify-self-end" 
+                height={300}
+                width={300}/>
+
+        
+              </div>
+  
+          
+              <div class="border-white border-t-2 mt-14 px-2"></div>
+          </div>
+  
+      </div> : null
+    }
+  </section>
+

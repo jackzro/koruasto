@@ -1,0 +1,56 @@
+---
+import { getProdukHero, getTentangKamiPageProduct } from "@/helpers/rajaKertas";
+import { Image } from "astro:assets";
+
+  const response = await getTentangKamiPageProduct()
+
+  if (!response)
+    return new Response('Page not found', {
+        status: 404,
+    })
+
+---
+
+<section class='relative px-[7%]' >
+
+  {response?.value !== undefined ?
+  <div>
+        <div class="flex max-h-[60rem] items-center text-white">
+            <div class="w-[800px]">
+              <h1 class="mb-5 text-2xl leading-none font-semibold md:mb-6 md:text-5xl md:leading-tight">
+                {response.value.title}
+              </h1>
+              <p class="text-sm text-text-alternative md:text-lg">
+                {response.value.description}
+              </p>
+            </div>
+
+            <div>
+              <Image
+              src={response.app_config_image_2}
+              alt={"Koru"}
+              class="w-[900px] h-[400px] md:h-[600px]"
+              inferSize
+              loading="eager"
+           
+            />
+            </div>
+       
+        </div>
+
+        <div class="absolute inset-0 -z-10">
+            <Image
+              src={response.app_config_image}
+              alt={"Koru"}
+              class="w-full h-full object-cover"
+              inferSize
+              loading="eager"
+           
+            />
+            <div class="absolute inset-0 bg-black/80" />
+          </div>
+
+    </div> : null
+  }
+    
+</section>

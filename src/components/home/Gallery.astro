@@ -1,0 +1,19 @@
+---
+import { getHomeGallery } from "@/helpers/rajaKertas";
+import CarouselComponent from "../react/Carousel";
+
+const response = await getHomeGallery()
+const {pathname} = Astro.url
+---
+
+<section class="text-white p-10 bg-brownkertas">
+
+    <div class="space-y-6 pl-6">
+        <h2 class="text-4xl font-bold">Galeri Gambar</h2>
+        <p>Lihat berbagai penggunaan kertas dalam industri yang berbeda.</p>
+    </div>
+
+    {response.results.length !== 0 ?  <CarouselComponent client:load gallery={response.results} produk={[]} type="gallery" pathname={pathname} /> : null}
+  
+   
+</section>

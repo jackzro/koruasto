@@ -1,0 +1,31 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import Profile from '../components/home/Profile.astro';
+import Features from '../components/home/Features.astro';
+import Produk from '../components/home/Produk.astro';
+import '@/styles/globals.css'
+import Faq from '@/components/home/Faq.astro';
+import Partner from '@/components/home/Partner.astro';
+import Footer from '@/components/home/Footer.astro';
+import Hero from '@/components/home/Hero.astro';
+import Gallery from '@/components/home/Gallery.astro';
+import Why from '@/components/home/why.astro';
+---
+
+<Layout title="Koru MCM">
+	<main>
+	<Hero />
+	<Profile/>
+	<Why/>
+	<!-- <Features/> -->
+	<Produk/>
+	<Faq/>
+	<!-- <Partner/>
+	<Gallery/> -->
+	<Footer/>
+	
+		
+	</main>
+</Layout>
+

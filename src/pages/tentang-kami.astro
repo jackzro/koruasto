@@ -1,0 +1,19 @@
+---
+export const prerender = true;
+import Footer from "@/components/home/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Description from "@/components/kertas/Description.astro";
+import DescTwo from "@/components/kertas/DescTwo.astro";
+import Visimisi from "@/components/kertas/Visimisi.astro";
+import Why from "@/components/home/why.astro";
+
+---
+<Layout title="Tentang Kami">
+    <main>
+        <Description/>
+        <DescTwo/>
+        <Visimisi/>
+        <Why color="abukoru"/>
+        <Footer/>
+    </main>
+</Layout>
