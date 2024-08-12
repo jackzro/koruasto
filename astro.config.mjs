@@ -8,7 +8,7 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://rajakertas.id",
+  site: "https://korumcm.com",
   devToolbar: {
     enabled: false,
   },
@@ -27,5 +27,5 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-  // adapter: vercel()
+  // adapter: vercel(),
 });
