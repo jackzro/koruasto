@@ -1,4 +1,4 @@
-import { getProductList } from "@/helpers/rajaKertas";
+import { getProductList } from "@/helpers/koru";
 
 export async function GET() {
   const pages = [
