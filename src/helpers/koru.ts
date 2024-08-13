@@ -8,6 +8,7 @@ const getRequest = async (
 ) => {
   try {
     // const { data: response } = await request.get(endpoint, { params });
+
     const data = await fetch(`${import.meta.env.PUBLIC_API}${endpoint}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },

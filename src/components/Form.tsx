@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { postContactUs } from "@/helpers/rajaKertas";
+import { postContactUs } from "@/helpers/koru";
 import { toast } from "react-toastify";
 import { Form, Field } from "react-final-form";
 import { string } from "yup";
